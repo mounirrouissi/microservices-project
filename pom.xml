@@ -24,7 +24,7 @@
   <properties>
     <java.version>21</java.version>
     <spring-cloud.version>2023.0.1</spring-cloud.version>
-    <dockerPassword>azerPOIU1234</dockerPassword>
+    <dockerPassword>dckr_pat_H-aStGcoxfdAqVihrc0cNGgXrLc</dockerPassword>
   </properties>
   <build>
     <plugins>
@@ -33,14 +33,14 @@
         <artifactId>spring-boot-maven-plugin</artifactId>
         <configuration>
           <image>
-            <name>saiupadhyayula007/new-${project.artifactId}</name>
+            <name>mounirr/new-${project.artifactId}</name>
             <builder>dashaun/builder:tiny</builder>
             <publish>true</publish>
           </image>
           <docker>
             <publishRegistry>
               <username>mounirr</username>
-              <password>azerPOIU1234</password>
+              <password>${dockerPassword}</password>
             </publishRegistry>
           </docker>
           <excludes>
