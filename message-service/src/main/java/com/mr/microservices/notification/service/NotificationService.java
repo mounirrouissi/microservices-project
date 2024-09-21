@@ -15,7 +15,7 @@ import org.springframework.stereotype.Service;
 @Slf4j
 public class NotificationService {
 
-    private final JavaMailSender javaMailSender;
+
 
     @KafkaListener(topics = "order-placed")
     public void listen(OrderPlacedEvent orderPlacedEvent){
@@ -37,12 +37,6 @@ public class NotificationService {
                     orderPlacedEvent.getLastName().toString(),
                     orderPlacedEvent.getOrderNumber()));
         };
-        try {
-            javaMailSender.send(messagePreparator);
-            log.info("Order Notifcation email sent!!");
-        } catch (MailException e) {
-            log.error("Exception occurred when sending mail", e);
-            throw new RuntimeException("Exception occurred when sending mail to springshop@email.com", e);
-        }
+        //TODO send mail
     }
 }

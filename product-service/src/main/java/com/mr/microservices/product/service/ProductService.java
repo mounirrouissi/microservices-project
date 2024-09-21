@@ -18,6 +18,7 @@ public class ProductService {
 
     public ProductResponse createProduct(ProductRequest productRequest) {
         Product product = Product.builder()
+                .id(productRequest.id())
                 .name(productRequest.name())
                 .description(productRequest.description())
                 .skuCode(productRequest.skuCode())
@@ -38,4 +39,23 @@ public class ProductService {
                         product.getPrice()))
                 .toList();
     }
-}
+
+    public ProductResponse updateProduct(String id, ProductRequest productRequest) {
+        Product product = productRepository.findById(id)
+                .map(
+                        product1 -> {
+                            product1.setName(productRequest.name());
+                            product1.setDescription(productRequest.description());
+                            product1.setSkuCode(productRequest.skuCode());
+                            product1.setPrice(productRequest.price());
+                            return product1;
+                        }).orElseThrow(() -> new RuntimeException("Product not found"));
+        productRepository.save(product);
+        log.info("Product updated successfully");
+        return new ProductResponse(product.getId(), product.getName(), product.getDescription(),
+                product.getSkuCode(),
+                product.getPrice());
+    }
+    }
+
+
