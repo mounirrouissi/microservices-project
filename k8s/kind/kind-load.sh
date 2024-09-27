@@ -13,8 +13,8 @@ docker pull grafana/grafana:10.1.0
 docker pull mounirr/new-api-gateway:latest
 docker pull mounirr/new-product-service:latest
 docker pull mounirr/new-order-service:latest
-docker pull mounirr/new-inventory-service:latest
-docker pull mounirr/new-notification-service:latest
+docker pull mounirr/new-message-service:latest
+docker pull mounirr/new-message-service:latest
 
 kind load docker-image -n microservices mongo:7.0.5
 kind load docker-image -n microservices mysql:8.3.0
@@ -32,4 +32,4 @@ kind load docker-image -n microservices mounirr/new-api-gateway:latest
 kind load docker-image -n microservices mounirr/new-product-service:latest
 kind load docker-image -n microservices mounirr/new-order-service:latest
 kind load docker-image -n microservices mounirr/new-inventory-service:latest
-kind load docker-image -n microservices mounirr/new-notification-service:latest
+kind load docker-image -n microservices mounirr/new-message-service:latest
